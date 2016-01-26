@@ -1,0 +1,20 @@
+1. Introduce Comments into the system. Every Article can have multiple comments.
+   Comment consists of - Author, Text, Created Date. 
+
+   List of all articles (GET http://localhost:8080/articles) should NOT include comments.
+   Returning single article details (GET http://localhost:8080/articles/{articleId}) should include list of comments that belongs to article
+
+2. We need a way to ingest large number of articles at once from a file. 
+
+   ArticleIngester should load articles_to_ingest.txt file, parse present articles in JSON format and store all of them into the DB.
+
+3. GET http://localhost:8080/articles/search/{searchText} functionality needs to be implemented.
+
+   This should return list of all articles where author, title or text contains the searched text.
+
+4. GET http://localhost:8080/authors/stats functionality needs to be implemented.
+
+   This should return list of all article authors with number of articles written by them.
+   Use already provided AuthorStats DTO. See AuthorDAO.findAll() for inspiration.
+
+5. Suggest a list of improvements to the system

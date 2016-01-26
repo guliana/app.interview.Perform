@@ -1,0 +1,68 @@
+SET DATABASE UNIQUE NAME HSQLDB525DFCF029
+SET DATABASE GC 0
+SET DATABASE DEFAULT RESULT MEMORY ROWS 0
+SET DATABASE EVENT LOG LEVEL 0
+SET DATABASE TRANSACTION CONTROL LOCKS
+SET DATABASE DEFAULT ISOLATION LEVEL READ COMMITTED
+SET DATABASE TRANSACTION ROLLBACK ON CONFLICT TRUE
+SET DATABASE TEXT TABLE DEFAULTS ''
+SET DATABASE SQL NAMES FALSE
+SET DATABASE SQL REFERENCES FALSE
+SET DATABASE SQL SIZE TRUE
+SET DATABASE SQL TYPES FALSE
+SET DATABASE SQL TDC DELETE TRUE
+SET DATABASE SQL TDC UPDATE TRUE
+SET DATABASE SQL TRANSLATE TTI TYPES TRUE
+SET DATABASE SQL CONCAT NULLS TRUE
+SET DATABASE SQL UNIQUE NULLS TRUE
+SET DATABASE SQL CONVERT TRUNCATE TRUE
+SET DATABASE SQL AVG SCALE 0
+SET DATABASE SQL DOUBLE NAN TRUE
+SET FILES WRITE DELAY 500 MILLIS
+SET FILES BACKUP INCREMENT TRUE
+SET FILES CACHE SIZE 10000
+SET FILES CACHE ROWS 50000
+SET FILES SCALE 32
+SET FILES LOB SCALE 32
+SET FILES DEFRAG 0
+SET FILES NIO TRUE
+SET FILES NIO SIZE 256
+SET FILES LOG TRUE
+SET FILES LOG SIZE 50
+CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
+ALTER USER SA SET LOCAL TRUE
+CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+SET SCHEMA PUBLIC
+CREATE SEQUENCE PUBLIC.ARTICLE_SEQ AS INTEGER START WITH 1
+CREATE MEMORY TABLE PUBLIC.ARTICLES(ID INTEGER NOT NULL PRIMARY KEY,AUTHOR VARCHAR(250),CREATE_TIMESTAMP TIMESTAMP,TEXT VARCHAR(2000),TITLE VARCHAR(250))
+CREATE MEMORY TABLE PUBLIC.COMMENTS(ID INTEGER NOT NULL PRIMARY KEY,AUTHOR VARCHAR(255),TEXT VARCHAR(255),DATE TIMESTAMP,ARTICLE INTEGER NOT NULL,CONSTRAINT FK_82DYDFP34KBUPFERCMFA0IEWP FOREIGN KEY(ARTICLE) REFERENCES PUBLIC.ARTICLES(ID))
+CREATE MEMORY TABLE PUBLIC.HIBERNATE_SEQUENCES(SEQUENCE_NAME VARCHAR(255),SEQUENCE_NEXT_HI_VALUE INTEGER)
+ALTER SEQUENCE SYSTEM_LOBS.LOB_ID RESTART WITH 1
+ALTER SEQUENCE PUBLIC.ARTICLE_SEQ RESTART WITH 15
+SET DATABASE DEFAULT INITIAL SCHEMA PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.SQL_IDENTIFIER TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.YES_OR_NO TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.TIME_STAMP TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.CARDINAL_NUMBER TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.CHARACTER_DATA TO PUBLIC
+GRANT DBA TO SA
+SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+SET SCHEMA PUBLIC
+INSERT INTO ARTICLES VALUES(1,'Rob Winch','2016-01-20 08:43:29.952000','Rob Winch shows how to incrementally build security into an application, highlighting the new features in Spring Security 4 along the way.','From 0 to Spring Security 4.0')
+INSERT INTO ARTICLES VALUES(2,'Martin Fowler','2016-01-20 08:45:26.422000','In the early 00\u2019s, I was often buttonholed by various people, particularly Paul Hammant, who told me about their use of inversion of control. Many of these conversations left me more puzzled than anything else, but eventually I spent the time to sort out what they were talking about. This was about the time when the Spring Framework was using some very similar ideas. As a result we came up with a new term: Dependency Injection. This essay describes my explanation of this idea as it was clarifying in 2004.','Dependency Injection')
+INSERT INTO ARTICLES VALUES(3,'Robert C. Martin','2016-01-20 08:46:37.733000','How do you scale a software system? One thing should be obvious: at some point you need to have more than one computer. There was a day, and it wasn''t so long ago, that scaling a system could be achieved by waiting. You simply waited for computers to get faster and more powerful. Every few months you automatically got an increase in scale.','Clean Micro-service Architecture')
+INSERT INTO ARTICLES VALUES(4,'Robert C. Martin','2016-01-20 08:47:27.675000','The concentric circles represent different areas of software. In general, the further in you go, the higher level the software becomes. The outer circles are mechanisms. The inner circles are policies. The overriding rule that makes this architecture work is The Dependency Rule. This rule says that source code dependencies can only point inwards. Nothing in an inner circle can know anything at all about something in an outer circle. In particular, the name of something declared in an outer circle must not be mentioned by the code in the an inner circle. That includes, functions, classes. variables, or any other named software entity.','The Clean Architecture')
+INSERT INTO ARTICLES VALUES(5,'Robert C. Martin','2016-01-20 08:48:01.797000','One of my regular bike-riding podcasts is Astronomy Cast, by Dr. Pamela Gay and Fraser Cain. Indeed, if you go to cleancodeproject.com you''ll see that Astronomy Cast is one of the charities on my list of favorites. Make a contribution and I will send you a green Clean Code wristband, or coffee cup, or sweatshirt. If you listen to Astronomy Cast you''ll also find that I am a sponsor. This podcast is always about science; and the science content is quite good. It''s techie. It''s geeky. It''s right up my alley. I''ve listened to almost every one of the 399 episodes. If you like science -- especially science about space and astronomy, this is a great resource.','Manhandled')
+INSERT INTO ARTICLES VALUES(6,'Martin Fowler','2016-01-20 08:48:33.084000','Perhaps the biggest shift in my thinking during my career has been towards an evolutionary approach to architecture and design. When I was first taught about software design, it was as an activity separated from programming that should be completed before programming began. Now I see it as an activity that is intertwined with programming. I wrote about this shift in detail for Is Design Dead - one of my most popular web articles. You can find more articles and bliki entries under the evolutionary design tag.','Evolutionary Architecture and Design')
+INSERT INTO ARTICLES VALUES(7,'Martin Fowler','2016-01-20 08:49:01.298000','Many people are concerned about building a database in an evolutionary manner. How can you change a database schema when you have a production database full of valuable data? My colleague Pramod Sadalage has been at the forefront of solving this puzzle, ensuring that such database evolution is an unremarkable practice on ThoughtWorks projects. He collaborated with me in writing this article on his approach and later wrote a books on refactoring databases and recipes for continuous database integration.','Evolutionary Database Design')
+INSERT INTO ARTICLES VALUES(8,'Greg Young','2016-01-20 08:49:55.111000','Hopefully over time you as a developer change your opinions. One thing I have drastically changed my opinion over time on is tooling. As many know I used to work heavily on a tool called mighty moose (still works and is OSS). One of the things I built into mighty moose was a pretty cool graphing feature I thought was the bees knees at the time that I built it. You can see it and alot of other cool features Svein and I built into it here: http://continuoustests.com','Your Tools Control You')
+INSERT INTO ARTICLES VALUES(9,'Greg Young','2016-01-20 08:50:19.754000','I had an interesting question when sitting with a client today. The Event Store supports internally role based security through ACLs they would prefer to use a claim based system with it. An interesting idea, is there a reasonably easy way to do this? Well yes but it requires a bit of coding around (would be a nice thing to have in a library somewhere *wink wink*). The general idea with claims based security is that something else will do the authentication and the application will act only on a series of claims that are given. In this particular example they want to control access to streams based upon claims about the user and to do it in a reasonably generic way.','Another Security Model')
+INSERT INTO ARTICLES VALUES(10,'Martin Fowler','2016-01-20 08:50:57.243000','A key part of the design and delivery approach I advocate is using automated regression tests as a bug-detection mechanism. This is vital both to reduce bugs and to enable refactoring. A common problem I\u2019ve run into is when test suites decay due to tests failing unpredictably. Therefore it\u2019s important to understand the common causes of this non-determinism: lack of isolation, asynchronous behavior, remote services, time, and resource leaks. Once you get the hang of why these are happening you are well on your way to fixing them and getting a regression suite you can rely on.','Eradicating Non-Determinism')
+INSERT INTO ARTICLES VALUES(11,'Matt Lacey','2016-01-23 19:02:59.538000','After listening to a recent .Net Rocks show about Technical Debt I thought I''d share some tips I have on working with technical debt. I worry if ''Technical debt'' is just a label we put on things so we don''t have to think about them. e.g. ''We know this will create technical debt and we can come back to it at some point in the future.'' This doesn''t require that we do the best to mitigate the consequences of that debt now though.','5 Tips On Working With Technical Debt')
+INSERT INTO ARTICLES VALUES(12,'Ruth Avramovich','2016-01-23 19:02:59.538000','In this series of posts I am covering some of the many ways you can benefit from XpoLog and especially on how to get the most valuable information from your log4j event logs. By running the XpoLog Analytic Search on your log4j data, you can among other things measure your application performance and thread activity, measure code activity with class and method analytics on log4j, build security analysis, and make use of various visualization gadgets for maximum analysis. In this post I will show you how XpoLog can help you find errors in your Java code, which in turn will help you create better quality code. If you want to follow as you read along, you can download our software for free here.','One Small Error in Java Code, One Giant Leap for Java Code Quality')
+INSERT INTO ARTICLES VALUES(13,'Emil Forslund','2016-01-23 19:02:59.538000','One of the bigest features in Java 8 is the ability to stream over collections of objects. By adding the .stream()-method into the Collection interface, every collection in the java language is suddenly expanded with this new ability. Other data structures like the Map-interface, do not implement the method as they are not, strictly speaking, collections. In this article I will show you how Speedment Open Source streams efficiently over standard Java maps, expanding the Stream interface into something called a MapStream! This addition will make it easier to keep your streams concrete and readable even in complex scenarios. Hopefully this will allow you to keep streaming without prematurely collecting the result.','Extending the Stream API to Maps')
+INSERT INTO ARTICLES VALUES(14,'janko mrkvicka','2016-01-23 22:47:28.778000','testujeme','test')
+INSERT INTO COMMENTS VALUES(1,'komentator','testujeme komenty','2016-01-23 22:50:26.890000',1)
+INSERT INTO COMMENTS VALUES(32768,'janko','super clanok','2016-01-24 00:00:14.164000',1)
+INSERT INTO HIBERNATE_SEQUENCES VALUES('comments',2)
